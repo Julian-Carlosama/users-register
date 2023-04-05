@@ -655,13 +655,13 @@ export default {
         },
 
         // Method that allow check the field and control the text
-        checkPassword() {
+        /*checkPassword() {
             if (this.password === '') {
                 this.showMessagePS = true;
             } else {
                 this.showMessagePS = false;
             }
-        },
+        },*/
 
         // Method that allow check the field and control the text
         checkConfirmPass() {
@@ -708,96 +708,86 @@ export default {
             }
         },
 
+        // Method that clean the form fiels
+
+        cleanForm() {
+            this.country = '';
+            this.gender = '';
+            this.name = '';
+            this.lastname = '';
+            this.birthday = '';
+            this.idNumber = '';
+            this.imageFront = '';
+            this.imageBack = '';
+            this.email = '';
+            this.password = '';
+            this.confirmPassword = '';
+            this.phoneNumber = '';
+            this.movileNumber = '';
+            this.address = '';
+            this.postalCode = '';
+        },
+
+
 
         // Method to check data fields and display them in console
         submitForm() {
-            if (this.country === "") {
-                console.log('Faltan los datos de country')
-                return;
-            }
-            if (this.gender === "") {
-                console.log('Faltan los datos de gender')
-                return;
-            }
-            if (this.name === "") {
-                console.log('Faltan los datos de name')
-                return;
-            }
-            if (this.lastname === "") {
-                console.log('Faltan los datos de lastname')
-                return;
-            }
-            if (this.birthday === "") {
-                console.log('Faltan los datos de birthday')
-                return;
-            }
-            if (this.idNumber === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.imageFront === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.imageBack === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.email === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.password === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.confirmPassword === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.phoneNumber === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.movileNumber === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.address === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
-            if (this.postalCode === "") {
-                console.log('Faltan los datos de idNumber')
-                return;
-            }
 
-            /*if (this.password !== this.confirmPassword) {
-                // mostrar un mensaje de error
-                console.log('Las contraseñas no coinciden')
-                return
-            }*/
+            // Get all files from the form
+            const formFiels = [
+                'country',
+                'gender',
+                'name',
+                'lastname',
+                'birthday',
+                'idNumber',
+                'imageFront',
+                'imageBack',
+                'email',
+                'password',
+                'confirmPassword',
+                'phoneNumber',
+                'movileNumber',
+                'address',
+                'postalCode'
+            ];
 
-            // Show in console
-            console.log('Formulario enviado',
-                {
-                    country: this.country,
-                    gender: this.gender,
-                    name: this.name,
-                    lastname: this.lastname,
-                    birthday: this.birthday,
-                    idNumber: this.idNumber,
-                    imageFront: this.imageFront,
-                    imageBack: this.imageBack,
-                    email: this.email,
-                    password: this.password,
-                    confirmPassword: this.confirmPassword,
-                    phoneNumber: this.phoneNumber,
-                    movileNumber: this.movileNumber,
-                    address: this.address,
-                    postalCode: this.postalCode
+            // Run all fiels to check if they are filled
+
+            for(const field of formFiels) {
+                if (!field) {
+                    console.log(`Faltan los datos del campo ${field}`);
+                    return;
                 }
-            )
+            }
+
+            if (this.password !== this.confirmPassword) {
+                console.log('Las contraseñas no coinciden');
+            }
+
+            // Show all fields in console
+            console.log('Fomulario enviado con los datos de: ', {
+                country: this.country,
+                gender: this.gender,
+                name: this.name,
+                lastname: this.lastname,
+                birthday: this.birthday,
+                idNumber: this.idNumber,
+                imageFront: this.imageFront,
+                imageBack: this.imageBack,
+                email: this.email,
+                password: this.password,
+                confirmPassword: this.confirmPassword,
+                phoneNumber: this.phoneNumber,
+                movileNumber: this.movileNumber,
+                address: this.address,
+                postalCode: this.postalCode
+            }
+            );
+            alert('Formulario enviado con éxito!');
+            
+            // Call functions that allow clean the form fields
+            this.cleanForm();
         },
 
 
@@ -862,9 +852,9 @@ export default {
             this.touched = newValIB === '';
         },
 
-        email() {
+        /*email() {
             this.checkValidity();
-        },
+        },*/
     },
 
     // Function that allow get all list country altrough API
